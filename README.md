@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/preview.svg" width="560" alt="Виджет Tile">
+  <img src="docs/widget.svg" width="560" alt="Виджет Tile">
 </p>
 
 ## Описание
