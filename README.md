@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/widget.svg" width="560" alt="Виджет Tile">
+  <img src="docs/widget-ru.svg" width="600" alt="Виджет Tile">
 </p>
 
 ## Описание
@@ -117,6 +117,10 @@ bash build.sh release
 
 <a name="english"></a>
 ## English
+
+<p align="center">
+  <img src="docs/widget-en.svg" width="600" alt="Tile widget">
+</p>
 
 Tile is a macOS desktop widget that shows your computer activity as a grid: one tile per day, about three months of history. It reads the system Screen Time database, so there is nothing to track manually.
 
