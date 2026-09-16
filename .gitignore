@@ -1,0 +1,6 @@
+activity_widget_prompt.md
+.DS_Store
+**/.DS_Store
+**/__pycache__/
+*.pyc
+dist/

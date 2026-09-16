@@ -1,0 +1,75 @@
+{
+  "mode": "deny",
+
+  "_comment": "mode: 'deny' – считаем всё, кроме перечисленного в deny. 'allow' – считаем ТОЛЬКО то, что в allow. apps – bundle id, sites – домены. Браузеры (Safari, Chrome) в топ-3 не показываются: вместо них идут домены, иначе время задваивалось бы.",
+
+  "apps": {
+    "deny": [
+      "com.apple.loginwindow",
+      "com.apple.ScreenSaver.Engine",
+      "com.apple.finder",
+      "com.apple.systempreferences",
+      "com.apple.controlcenter",
+      "com.apple.notificationcenterui",
+      "com.apple.ActivityMonitor",
+      "com.apple.SetupAssistant",
+      "com.apple.ScreenContinuity",
+      "net.freemacsoft.AppCleaner"
+    ],
+    "allow": [
+      "com.anthropic.claudefordesktop",
+      "md.obsidian",
+      "com.apple.Terminal",
+      "com.sublimetext.4",
+      "com.apple.Safari",
+      "com.google.Chrome"
+    ]
+  },
+
+  "sites": {
+    "deny": [
+      "localhost",
+      "127.0.0.1",
+      "desktop.docker.com"
+    ],
+    "allow": [
+      "github.com",
+      "app.excalidraw.com",
+      "notebooklm.google.com"
+    ]
+  },
+
+  "names": {
+    "com.anthropic.claudefordesktop": "Claude",
+    "org.videolan.vlc": "VLC",
+    "ru.keepcoder.Telegram": "Telegram",
+    "com.apple.Terminal": "Terminal",
+    "md.obsidian": "Obsidian",
+    "org.localsend.localsendApp": "LocalSend",
+    "ru.yandex.desktop.telemost": "Телемост",
+    "com.spotify.client": "Spotify",
+    "com.electron.ollama": "Ollama",
+    "org.m0k.transmission": "Transmission",
+    "com.sublimetext.4": "Sublime Text",
+    "com.apple.TextEdit": "TextEdit",
+    "net.whatsapp.WhatsApp": "WhatsApp",
+    "com.apple.Preview": "Preview",
+    "org.zotero.zotero": "Zotero",
+    "com.microsoft.VSCode": "VS Code",
+    "www.youtube.com": "YouTube",
+    "www.instagram.com": "Instagram",
+    "www.google.com": "Google",
+    "app.excalidraw.com": "Excalidraw",
+    "notebooklm.google.com": "NotebookLM",
+    "gemini.google.com": "Gemini"
+  },
+
+  "theme": {
+    "_comment": "accent – любой hex. Рампа из 5 оттенков строится по его OKLCH-hue, менять её вручную не нужно. Пресеты: #9974f7 ki-school, #10b981 зелёный, #3b82f6 синий, #f59e0b янтарный. Можно задать 'ramp': [5 hex] и перебить генерацию целиком.",
+    "accent": "#9974f7",
+    "showLegend": true,
+    "cellSize": 22
+  },
+
+  "minSeconds": 60
+}

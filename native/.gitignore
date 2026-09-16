@@ -1,0 +1,4 @@
+.build/
+ActivityHeatmap.app/
+*.log
+.signing-identity

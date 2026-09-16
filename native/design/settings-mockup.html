@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="65c1ff8d-d523-4b4d-944e-429d1edecfab"></script>
+
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<style>
+  html, body { margin: 0; padding: 0; }
+  a { color: #9974f7; text-decoration: none; }
+  a:hover { color: #7d55e0; }
+  @keyframes drift { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(-40px,30px) scale(1.08); } 100% { transform: translate(0,0) scale(1); } }
+</style>
+</helmet>
+<div style="min-height: 100vh; padding: 64px 56px; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif; background: linear-gradient(160deg, #e6e0f5 0%, #efe2f0 45%, #dfe6f5 100%); position: relative; overflow: auto;">
+  <div style="position: fixed; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(153,116,247,0.4), transparent 70%); top: -160px; left: -120px; filter: blur(70px); animation: drift 20s ease-in-out infinite;"></div>
+  <div style="position: fixed; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(247,114,201,0.32), transparent 70%); bottom: -140px; right: -90px; filter: blur(70px); animation: drift 24s ease-in-out infinite reverse;"></div>
+  <div style="position: fixed; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(95,157,247,0.3), transparent 70%); top: 45%; left: 50%; filter: blur(80px); animation: drift 28s ease-in-out infinite;"></div>
+
+  <div style="position: relative; display: flex; align-items: flex-start; gap: 56px; flex-wrap: wrap;">
+
+    <!-- 1 · Main settings window -->
+    <div data-screen-label="Настройки" style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="font-size: 13px; font-weight: 700; color: rgba(30,25,50,0.5); letter-spacing: 0.6px;">1 · ГЛАВНОЕ ОКНО</div>
+      <div style="width: 440px; border-radius: 26px; background: linear-gradient(135deg, rgba(255,255,255,0.66) 0%, rgba(255,255,255,0.38) 100%); backdrop-filter: blur(42px) saturate(180%); -webkit-backdrop-filter: blur(42px) saturate(180%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 24px 60px rgba(50,35,90,0.16), inset 0 1px 0 rgba(255,255,255,0.85); overflow: hidden;">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 14px 18px;">
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f57;"></span>
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #febc2e;"></span>
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #28c840;"></span>
+          <span style="flex: 1; text-align: center; font-size: 13px; font-weight: 600; color: rgba(30,25,50,0.75); margin-right: 52px;">Активность — настройки</span>
+        </div>
+        <div style="padding: 6px 18px 20px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="border-radius: 16px; background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.65); box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 15px 18px;">
+              <div style="display: flex; flex-direction: column; gap: 3px;">
+                <span style="font-size: 14px; font-weight: 600; color: rgba(30,25,50,0.9);">Виджет включён</span>
+                <span style="font-size: 12px; color: rgba(30,25,50,0.5);">Плитки активности на рабочем столе</span>
+              </div>
+              <div sc-camel-on-click="{{ toggleWidget }}" style="flex-shrink: 0; width: 44px; height: 26px; border-radius: 999px; background: {{ widgetTrack }}; position: relative; cursor: pointer; transition: background 0.18s ease; box-shadow: inset 0 1px 2px rgba(30,25,50,0.12);">
+                <span style="position: absolute; top: 2px; left: {{ widgetKnob }}; width: 22px; height: 22px; border-radius: 50%; background: #ffffff; box-shadow: 0 1px 3px rgba(30,25,50,0.25); transition: left 0.18s ease;"></span>
+              </div>
+            </div>
+            <div style="height: 1px; background: rgba(30,25,50,0.07); margin: 0 18px;"></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 15px 18px;">
+              <div style="display: flex; flex-direction: column; gap: 3px;">
+                <span style="font-size: 14px; font-weight: 600; color: rgba(30,25,50,0.9);">Запускать при входе</span>
+                <span style="font-size: 12px; color: rgba(30,25,50,0.5);">Автозапуск после перезагрузки Mac</span>
+              </div>
+              <div sc-camel-on-click="{{ toggleAutostart }}" style="flex-shrink: 0; width: 44px; height: 26px; border-radius: 999px; background: {{ autoTrack }}; position: relative; cursor: pointer; transition: background 0.18s ease; box-shadow: inset 0 1px 2px rgba(30,25,50,0.12);">
+                <span style="position: absolute; top: 2px; left: {{ autoKnob }}; width: 22px; height: 22px; border-radius: 50%; background: #ffffff; box-shadow: 0 1px 3px rgba(30,25,50,0.25); transition: left 0.18s ease;"></span>
+              </div>
+            </div>
+          </div>
+          <div style="border-radius: 16px; background: {{ accessBg }}; border: 1px solid {{ accessBorder }}; box-shadow: inset 0 1px 0 rgba(255,255,255,0.6); padding: 16px 18px; display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 9px;">
+              <span style="width: 9px; height: 9px; border-radius: 50%; background: {{ accessDot }}; box-shadow: 0 0 0 3px {{ accessHalo }};"></span>
+              <span style="font-size: 13px; font-weight: 700; color: rgba(30,25,50,0.85);">{{ accessTitle }}</span>
+            </div>
+            <span style="font-size: 12px; color: rgba(30,25,50,0.55); line-height: 1.5;">{{ accessDesc }}</span>
+            <sc-if value="{{ noAccess }}" hint-placeholder-val="{{ true }}">
+              <button sc-camel-on-click="{{ grantAccess }}" style="align-self: flex-start; font-size: 13px; font-weight: 600; color: #ffffff; background: #9974f7; border: none; border-radius: 999px; padding: 9px 18px; cursor: pointer; box-shadow: 0 6px 16px rgba(153,116,247,0.4), inset 0 1px 0 rgba(255,255,255,0.35);" style-hover="background: #8a63ec;">Открыть настройки системы</button>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 · Apps & sites list -->
+    <div data-screen-label="Приложения и сайты" style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="font-size: 13px; font-weight: 700; color: rgba(30,25,50,0.5); letter-spacing: 0.6px;">2 · ПРИЛОЖЕНИЯ И САЙТЫ</div>
+      <div style="width: 440px; border-radius: 26px; background: linear-gradient(135deg, rgba(255,255,255,0.66) 0%, rgba(255,255,255,0.38) 100%); backdrop-filter: blur(42px) saturate(180%); -webkit-backdrop-filter: blur(42px) saturate(180%); border: 1px solid rgba(255,255,255,0.6); box-shadow: 0 24px 60px rgba(50,35,90,0.16), inset 0 1px 0 rgba(255,255,255,0.85); overflow: hidden;">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 14px 18px;">
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f57;"></span>
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #febc2e;"></span>
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #28c840;"></span>
+          <span style="flex: 1; text-align: center; font-size: 13px; font-weight: 600; color: rgba(30,25,50,0.75); margin-right: 52px;">Что учитывать</span>
+        </div>
+        <div style="padding: 4px 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+          <input value="{{ query }}" sc-camel-on-change="{{ setQuery }}" placeholder="Поиск…" style="width: 100%; box-sizing: border-box; font-size: 13px; font-family: inherit; color: rgba(30,25,50,0.85); background: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.7); border-radius: 999px; padding: 10px 16px; outline: none; box-shadow: inset 0 1px 2px rgba(30,25,50,0.06);">
+          <div style="display: flex; flex-direction: column; gap: 7px;">
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.8px; color: rgba(30,25,50,0.45); padding: 2px 4px;">ПРИЛОЖЕНИЯ</div>
+            <div style="border-radius: 16px; background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.65); box-shadow: inset 0 1px 0 rgba(255,255,255,0.8); overflow: hidden;">
+              <sc-for list="{{ apps }}" as="app" hint-placeholder-count="4">
+                <div style="display: flex; align-items: center; gap: 12px; padding: 11px 16px; border-top: 1px solid rgba(30,25,50,0.05);">
+                  <span style="width: 28px; height: 28px; border-radius: 8px; background: {{ app.color }}; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: #ffffff; box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);">{{ app.initial }}</span>
+                  <span style="flex: 1; font-size: 13px; font-weight: 500; color: rgba(30,25,50,0.85);">{{ app.name }}</span>
+                  <div sc-camel-on-click="{{ app.toggle }}" style="flex-shrink: 0; width: 38px; height: 22px; border-radius: 999px; background: {{ app.track }}; position: relative; cursor: pointer; transition: background 0.18s ease; box-shadow: inset 0 1px 2px rgba(30,25,50,0.12);">
+                    <span style="position: absolute; top: 2px; left: {{ app.knob }}; width: 18px; height: 18px; border-radius: 50%; background: #ffffff; box-shadow: 0 1px 3px rgba(30,25,50,0.25); transition: left 0.18s ease;"></span>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 7px;">
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.8px; color: rgba(30,25,50,0.45); padding: 2px 4px;">САЙТЫ</div>
+            <div style="border-radius: 16px; background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.65); box-shadow: inset 0 1px 0 rgba(255,255,255,0.8); overflow: hidden;">
+              <sc-for list="{{ sites }}" as="site" hint-placeholder-count="3">
+                <div style="display: flex; align-items: center; gap: 12px; padding: 11px 16px; border-top: 1px solid rgba(30,25,50,0.05);">
+                  <span style="width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.6); border: 1px solid rgba(30,25,50,0.1); display: grid; place-items: center; font-size: 11px; font-weight: 700; color: {{ site.color }};">{{ site.initial }}</span>
+                  <span style="flex: 1; font-size: 13px; font-weight: 500; color: rgba(30,25,50,0.85);">{{ site.name }}</span>
+                  <div sc-camel-on-click="{{ site.toggle }}" style="flex-shrink: 0; width: 38px; height: 22px; border-radius: 999px; background: {{ site.track }}; position: relative; cursor: pointer; transition: background 0.18s ease; box-shadow: inset 0 1px 2px rgba(30,25,50,0.12);">
+                    <span style="position: absolute; top: 2px; left: {{ site.knob }}; width: 18px; height: 18px; border-radius: 50%; background: #ffffff; box-shadow: 0 1px 3px rgba(30,25,50,0.25); transition: left 0.18s ease;"></span>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <button style="align-self: center; font-size: 13px; font-weight: 600; color: #9974f7; background: rgba(153,116,247,0.12); border: 1px solid rgba(153,116,247,0.35); border-radius: 999px; padding: 9px 20px; cursor: pointer;" style-hover="background: rgba(153,116,247,0.2);">+ Добавить вручную</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 · Menu bar dropdown -->
+    <div data-screen-label="Трей-меню" style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="font-size: 13px; font-weight: 700; color: rgba(30,25,50,0.5); letter-spacing: 0.6px;">3 · ТРЕЙ-МЕНЮ</div>
+      <div style="width: 300px; display: flex; flex-direction: column;">
+        <div style="align-self: flex-end; margin-right: 20px; display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.55); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(255,255,255,0.6); border-radius: 12px; padding: 7px 14px; box-shadow: 0 8px 24px rgba(50,35,90,0.12);">
+          <span style="font-size: 13px; color: rgba(30,25,50,0.6);">🔋</span>
+          <span style="width: 20px; height: 20px; border-radius: 6px; background: #9974f7; display: grid; place-items: center; box-shadow: 0 2px 8px rgba(153,116,247,0.45);"><span style="width: 9px; height: 9px; border-radius: 2.5px; background: #ffffff;"></span></span>
+          <span style="font-size: 13px; font-weight: 600; color: rgba(30,25,50,0.75);">14:32</span>
+        </div>
+        <div style="align-self: flex-end; margin: 10px 34px 0 0; width: 0; height: 0; border-left: 9px solid transparent; border-right: 9px solid transparent; border-bottom: 10px solid rgba(255,255,255,0.7);"></div>
+        <div style="align-self: flex-end; margin-right: 8px; width: 264px; border-radius: 20px; background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.42) 100%); backdrop-filter: blur(42px) saturate(180%); -webkit-backdrop-filter: blur(42px) saturate(180%); border: 1px solid rgba(255,255,255,0.65); box-shadow: 0 20px 50px rgba(50,35,90,0.2), inset 0 1px 0 rgba(255,255,255,0.85); padding: 10px; display: flex; flex-direction: column; gap: 4px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; border-radius: 12px; background: rgba(255,255,255,0.45);">
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-size: 13px; font-weight: 600; color: rgba(30,25,50,0.9);">Виджет</span>
+              <span style="font-size: 11px; color: {{ trayStatusColor }};">{{ trayStatus }}</span>
+            </div>
+            <div sc-camel-on-click="{{ toggleWidget }}" style="flex-shrink: 0; width: 40px; height: 24px; border-radius: 999px; background: {{ widgetTrack }}; position: relative; cursor: pointer; transition: background 0.18s ease; box-shadow: inset 0 1px 2px rgba(30,25,50,0.12);">
+              <span style="position: absolute; top: 2px; left: {{ trayKnob }}; width: 20px; height: 20px; border-radius: 50%; background: #ffffff; box-shadow: 0 1px 3px rgba(30,25,50,0.25); transition: left 0.18s ease;"></span>
+            </div>
+          </div>
+          <div style="height: 1px; background: rgba(30,25,50,0.07); margin: 4px 8px;"></div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 12px; cursor: pointer; font-size: 13px; font-weight: 500; color: rgba(30,25,50,0.85);" style-hover="background: rgba(153,116,247,0.14);">
+            <span style="width: 6px; height: 6px; border-radius: 2px; background: #9974f7;"></span>
+            Настройки…
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: 12px; cursor: pointer; font-size: 13px; font-weight: 500; color: rgba(30,25,50,0.6);" style-hover="background: rgba(30,25,50,0.06);">
+            <span style="width: 6px; height: 6px; border-radius: 2px; background: rgba(30,25,50,0.3);"></span>
+            Выход
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: 1400, &quot;height&quot;: 900},
+  &quot;hasAccess&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Состояние&quot;}
+}">
+class Component extends DCLogic {
+  state = {
+    widgetOn: true,
+    autostart: true,
+    query: '',
+    apps: [
+      { name: 'Figma', color: '#9974f7', on: true },
+      { name: 'VS Code', color: '#5f9df7', on: true },
+      { name: 'Telegram', color: '#4fc9a8', on: false },
+      { name: 'Safari', color: '#f7a05f', on: true },
+      { name: 'Notion', color: '#f772c9', on: true },
+    ],
+    sites: [
+      { name: 'github.com', color: '#9974f7', on: true },
+      { name: 'youtube.com', color: '#f772c9', on: false },
+      { name: 'stackoverflow.com', color: '#f7a05f', on: true },
+    ],
+  };
+  toggleRow(list, i) {
+    this.setState(s => ({ [list]: s[list].map((r, j) => j === i ? { ...r, on: !r.on } : r) }));
+  }
+  toggleVals(on) {
+    return {
+      track: on ? '#9974f7' : 'rgba(30,25,50,0.15)',
+    };
+  }
+  renderVals() {
+    const { widgetOn, autostart, query } = this.state;
+    const noAccess = !(this.props.hasAccess ?? false);
+    const q = query.trim().toLowerCase();
+    const mapRow = (list) => (r) => {
+      const i = this.state[list].indexOf(r);
+      return {
+        name: r.name, color: r.color, initial: r.name[0].toUpperCase(),
+        track: r.on ? '#9974f7' : 'rgba(30,25,50,0.15)',
+        knob: r.on ? '18px' : '2px',
+        toggle: () => this.toggleRow(list, i),
+      };
+    };
+    return {
+      widgetTrack: widgetOn ? '#9974f7' : 'rgba(30,25,50,0.15)',
+      widgetKnob: widgetOn ? '20px' : '2px',
+      trayKnob: widgetOn ? '18px' : '2px',
+      toggleWidget: () => this.setState(s => ({ widgetOn: !s.widgetOn })),
+      autoTrack: autostart ? '#9974f7' : 'rgba(30,25,50,0.15)',
+      autoKnob: autostart ? '20px' : '2px',
+      toggleAutostart: () => this.setState(s => ({ autostart: !s.autostart })),
+      noAccess,
+      accessBg: noAccess ? 'rgba(247,160,95,0.14)' : 'rgba(79,201,168,0.14)',
+      accessBorder: noAccess ? 'rgba(247,160,95,0.45)' : 'rgba(79,201,168,0.45)',
+      accessDot: noAccess ? '#f7a05f' : '#4fc9a8',
+      accessHalo: noAccess ? 'rgba(247,160,95,0.25)' : 'rgba(79,201,168,0.25)',
+      accessTitle: noAccess ? 'Нет доступа к данным' : 'Доступ к данным есть',
+      accessDesc: noAccess
+        ? 'Для отслеживания активности нужен Full Disk Access. Разрешите доступ в Системных настройках.'
+        : 'Full Disk Access предоставлен — виджет получает данные об активности.',
+      grantAccess: () => {},
+      query,
+      setQuery: (e) => this.setState({ query: e.target.value }),
+      apps: this.state.apps.filter(r => !q || r.name.toLowerCase().includes(q)).map(mapRow('apps')),
+      sites: this.state.sites.filter(r => !q || r.name.toLowerCase().includes(q)).map(mapRow('sites')),
+      trayStatus: widgetOn ? 'Отслеживание активно' : 'Выключен',
+      trayStatusColor: widgetOn ? '#4fc9a8' : 'rgba(30,25,50,0.45)',
+    };
+  }
+}
+</script>
+
+
+</body></html>
