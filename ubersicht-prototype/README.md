@@ -32,7 +32,7 @@ GitHub-style heatmap активности мака за последние 13 н
    cp -R "activity-heatmap.widget" ~/Library/Application\ Support/Übersicht/widgets/
    ```
 
-   ⚠️ Имя папки `activity-heatmap.widget` менять нельзя – оно зашито в `command` внутри
+   Важно: имя папки `activity-heatmap.widget` менять нельзя – оно зашито в `command` внутри
    `index.jsx` (Übersicht запускает команды из корня `widgets/`). Переименуешь папку –
    поправь и строку `command`.
 
